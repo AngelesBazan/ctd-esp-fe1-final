@@ -13,8 +13,6 @@ const GrillaPersonajes = () => {
 
     return <div className="grilla-personajes">
        <TarjetaPersonaje />
-       <TarjetaPersonaje />
-       <TarjetaPersonaje />
     </div>
 }
  
