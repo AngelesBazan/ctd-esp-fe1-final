@@ -1,11 +1,60 @@
-import { Action, ActionCreator } from "@reduxjs/toolkit";
+import { Action, ActionCreator, ThunkAction } from "@reduxjs/toolkit";
 import { getPersonajes } from "../services/getPersonajes";
 import { personajeByName } from "../services/getPersonajeByName";
 /* import { getEpisodio } from "../services/getEpidosio"; */
+import { Personaje } from "../types/personaje.types";
+import { IRootState } from "../store/store";
 
+export interface ListarPersonajesPaginadosAction extends Action {
+  type: "LISTAR_PERSONAJES",
+  payload: {
+    personajes: Personaje[]
+  }
+}
 
+export interface BorrarPersonajeAction extends Action {
+  type: "BORRAR_PERSONAJE",
+  payload: {
+    buscar: string
+  }
+}
 
-export const listarPersonajesPaginados = (personajes:any) => {
+export interface AgregarFavoritoAction extends Action {
+  type: "AGREGAR_FAVORITO",
+  payload: {
+    favoritos: Personaje[]
+  }
+}
+
+export interface EliminarFavoritoAction extends Action {
+  type: "ELIMINAR_FAVORITO",
+    payload: {
+      favoritos: Personaje[]
+    }
+}
+
+export interface LimpiarFavoritoAction extends Action {
+  type: "LIMPIAR_FAVORITOS",
+    payload: {
+      favoritos: Personaje[]
+    }
+}
+
+export interface DetallePersonajeAction extends Action {
+  type: "MOSTRAR_DETALLE",
+    payload: {
+      personajeSeleccionado: Personaje[]
+    }
+}
+
+export interface ListarEpisodiosAction extends Action {
+  type: "LISTAR_EPISODIOS",
+    payload: {
+      episodios: Personaje[]
+    }
+}
+
+export const listarPersonajesPaginados: ActionCreator<ListarPersonajesPaginadosAction> = (personajes:Personaje[]) => {
   return {
     type: "LISTAR_PERSONAJES",
     payload: {
@@ -14,7 +63,7 @@ export const listarPersonajesPaginados = (personajes:any) => {
   }
 }
 
-export const borrarPersonaje = () => {
+export const borrarPersonaje: ActionCreator<BorrarPersonajeAction> = () => {
   return {
     type: "BORRAR_PERSONAJE",
     payload: {
@@ -23,7 +72,7 @@ export const borrarPersonaje = () => {
   }
 }
 
-export const agregarFavorito = (favoritos:any) => {
+export const agregarFavorito: ActionCreator<AgregarFavoritoAction> = (favoritos:Personaje[]) => {
   return {
     type: "AGREGAR_FAVORITO",
     payload: {
@@ -32,7 +81,7 @@ export const agregarFavorito = (favoritos:any) => {
   }
 } 
 
-export const eliminarFavorito = (favoritos:any) => {
+export const eliminarFavorito: ActionCreator<EliminarFavoritoAction> = (favoritos:Personaje[]) => {
   return {
     type: "ELIMINAR_FAVORITO",
     payload: {
@@ -41,7 +90,7 @@ export const eliminarFavorito = (favoritos:any) => {
   }
 }
 
-export const limpiarFavoritos = (favoritos: any) => {
+export const limpiarFavoritos: ActionCreator<LimpiarFavoritoAction> = (favoritos: Personaje[]) => {
   return{
     type: "LIMPIAR_FAVORITOS",
     payload: {
@@ -66,6 +115,10 @@ export const listarEpisodios = (episodios: any) => {
       episodios
     }
   }
+}
+
+export interface ListarPersonajesAction extends ThunkAction<void, IRootState, unknown, PersonajesAcciones> {
+
 }
 
 export const listarPersonajes = (pag: number) => {
@@ -93,6 +146,8 @@ export const personajesByName = (nombre: string) => {
     }
   };
 }
+
+export type PersonajesAcciones = ReturnType<typeof listarPersonajesPaginados> | ReturnType<typeof borrarPersonaje> | ReturnType<typeof agregarFavorito> | ReturnType<typeof eliminarFavorito> | ReturnType<typeof limpiarFavoritos> | ReturnType<typeof detallePersonaje>  | ReturnType<typeof listarEpisodios>
 
 
 /* export const listarTodosEpisodios = (listarEpisodios: any) => {
