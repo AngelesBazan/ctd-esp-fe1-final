@@ -13,21 +13,47 @@ import './tarjeta-personaje.css';
 
 const TarjetaPersonaje = () => {
 
-    // Esto selecciona del estado global el array de personajes
     const personajesPaginados = useSelector((state) => state.personajes.personajes);
-   
+    
+    /* const favoritos = useSelector((state) => state.personajes.favoritos);
+    console.log(favoritos); */
+
     return <>
         {
             personajesPaginados?.map((personaje) => (
-                <div key={personaje.id } className="tarjeta-personaje">
+                <div key={personaje.id} className="tarjeta-personaje">
                     <img src={personaje.image} alt={personaje.name} />
                     <div className="tarjeta-personaje-body">
                         <span> {personaje.name} </span>
-                        <BotonFavorito esFavorito={false} />
+                        <BotonFavorito personaje={personaje} />
                     </div>
                 </div>
             ))
         }
+
+{/* 
+
+    const TarjetaPersonaje: FC<Personaje> = (personaje: Personaje) => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const mostrarDetalles = () => {
+        dispatch(mostrarDetallesPersonaje(personaje));
+        navigate("/detalle");
+    }
+
+    return <div className="tarjeta-personaje">
+        <img src={personaje.image} alt={personaje.name} onClick={mostrarDetalles}/>
+        <div className="tarjeta-personaje-body">
+            <span>{personaje.name}</span> 
+            <BotonFavorito {...personaje}/>
+        </div>
+    </div>
+}
+    
+    export default TarjetaPersonaje;
+        */}
 
     </>
 }

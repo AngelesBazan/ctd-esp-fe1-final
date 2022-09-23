@@ -2,7 +2,7 @@ import { Action, ActionCreator } from "@reduxjs/toolkit";
 import { getPersonajes } from "../services/getPersonajes";
 import { personajeByName } from "../services/getPersonajeByName";
 
-// esto es para después despachar la acción del reducer en el thunk llamada asíncrona
+
 export const listarPersonajesPaginados = (personajes:any) => {
   return {
     type: "LISTAR_PERSONAJES",
@@ -17,6 +17,24 @@ export const borrarPersonaje = () => {
     type: "BORRAR_PERSONAJE",
     payload: {
       buscar: ""
+    }
+  }
+}
+
+export const agregarFavorito = (favoritos:any) => {
+  return {
+    type: "AGREGAR_FAVORITO",
+    payload: {
+      favoritos
+    }
+  }
+} 
+
+export const eliminarFavorito = (favoritos:any) => {
+  return {
+    type: "ELIMINAR_FAVORITO",
+    payload: {
+      favoritos
     }
   }
 }

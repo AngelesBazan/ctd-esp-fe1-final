@@ -1,7 +1,8 @@
 export const personajeByName = async (name) => {
 
 	const url = `https://rickandmortyapi.com/api/character/?name=${name}`;
-
+	/* `https://rickandmortyapi.com/api/character/${params}&page=${page}` */
+	
 	try {
 		const response = await fetch(url);
 		const data = await response.json();
