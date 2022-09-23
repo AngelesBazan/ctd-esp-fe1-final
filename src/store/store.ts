@@ -7,7 +7,6 @@ import thunk from 'redux-thunk';
 import { personajeReducer } from "../reducers/personaje.reducers";
 
 
-// la store debe estar vinculado a un reducer porque ésta es la función que manipula el state del store, por eso se lo paso por parámetro
 const rootReducer = combineReducers({
   personajes: personajeReducer,
 });

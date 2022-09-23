@@ -1,15 +1,13 @@
-export const personajeByName = async (name) => {
+export const getEpisodio = async (url) => {
 
-	const url = `https://rickandmortyapi.com/api/character/?name=${name}`;
-	
 	try {
 		const response = await fetch(url);
 		const data = await response.json();
 
         if (response.status === 200) {
-            return data.results;
+            return data;
         } else if (response.status === 404) {
-			throw new Error('No se encontró el personaje');
+			throw new Error('No se encontró el episodio');
         }
         
 	} catch {

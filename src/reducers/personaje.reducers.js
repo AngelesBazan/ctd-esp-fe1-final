@@ -2,7 +2,9 @@ const estadoInicial = {
     personajes: [],
     buscar: "",
     pagina: 1,
-    favoritos: []
+    favoritos: [],
+    personajeSeleccionado: "",
+    episodios: []
 }
 
 export const personajeReducer = (state = estadoInicial, action) => {
@@ -34,6 +36,18 @@ export const personajeReducer = (state = estadoInicial, action) => {
             return {
                 ...state,
                 favoritos: []
+            }
+
+        case "MOSTRAR_DETALLE":
+            return {
+                ...state,
+                personajeSeleccionado: action.payload.personajeSeleccionado
+            }
+
+        case "LISTAR_EPISODIOS":
+            return {
+                ...state,
+                episodios: action.payload.episodios
             }
 
         default:

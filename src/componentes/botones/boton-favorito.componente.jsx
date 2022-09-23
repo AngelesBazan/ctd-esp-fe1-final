@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { agregarFavorito, eliminarFavorito } from '../../actions/personajes.actions';
-/* import { useContext } from 'react'; */
-/* import { FavoritosContext } from '../../reducers/favoritos'; */
 import './boton-favorito.css';
 /**
  * Boton que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
@@ -15,7 +13,6 @@ const BotonFavorito = ({personaje}) => {
 
     const dispatch = useDispatch();
     const favoritos =  useSelector((state) => state.personajes.favoritos);
-    console.log(favoritos);
 
     const esFavorito = favoritos.find((favorito) => favorito.id === personaje.id); 
 

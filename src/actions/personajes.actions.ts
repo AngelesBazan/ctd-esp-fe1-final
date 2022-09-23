@@ -1,6 +1,8 @@
 import { Action, ActionCreator } from "@reduxjs/toolkit";
 import { getPersonajes } from "../services/getPersonajes";
 import { personajeByName } from "../services/getPersonajeByName";
+/* import { getEpisodio } from "../services/getEpidosio"; */
+
 
 
 export const listarPersonajesPaginados = (personajes:any) => {
@@ -48,6 +50,24 @@ export const limpiarFavoritos = (favoritos: any) => {
   }
 }
 
+export const detallePersonaje = (personajeSeleccionado: any) => {
+  return {
+    type: "MOSTRAR_DETALLE",
+    payload: {
+      personajeSeleccionado
+    }
+  }
+}
+
+export const listarEpisodios = (episodios: any) => {
+  return {
+    type: "LISTAR_EPISODIOS",
+    payload: {
+      episodios
+    }
+  }
+}
+
 export const listarPersonajes = (pag: number) => {
   return async (dispatch:any) => {
     try {
@@ -73,3 +93,22 @@ export const personajesByName = (nombre: string) => {
     }
   };
 }
+
+
+/* export const listarTodosEpisodios = (listarEpisodios: any) => {
+  return async (dispatch:any) => {
+    try {
+
+      // Acá necesito iterar el array de episodios (de listarEpisodios) para
+      // Pasale hacer una petición por cada endpoint del array
+      // Pero no me salió...
+
+      const resultado = await getEpisodio(url);
+      
+      
+		} catch (error) {
+      const errorMessage = new Error('¡Ups! Algo salió mal...');
+      return errorMessage;
+    }
+  };
+} */

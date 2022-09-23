@@ -1,3 +1,5 @@
+/* import { useEffect } from 'react';
+import { useDispatch } from 'react-redux'; */
 import './tarjeta-episodio.css';
 
 /**
@@ -8,15 +10,27 @@ import './tarjeta-episodio.css';
  * 
  * @returns un JSX element 
  */
-const TarjetaEpisodio = () => {
+const TarjetaEpisodio = ({episodios}) => {
 
-    return <div className="tarjeta-episodio">
-            <h4>Close Rick-counters of the Rick Kind</h4>
-            <div>
-                <span>S01E01</span>
-                <span>Lanzado el: April 7, 2014</span>
+    /* console.log(episodios); */
+
+    return <>
+    
+    {
+        episodios?.map( e =>
+            <div className="tarjeta-episodio">
+                <h4>{e}</h4>
+                
+                {/* <h4>Close Rick-counters of the Rick Kind</h4>
+                <div>
+                    <span>S01E01</span>
+                    <span>Lanzado el: April 7, 2014</span>
+                </div> */}
             </div>
-    </div>
+        )
+    }
+
+    </>
 }
 
 export default TarjetaEpisodio;

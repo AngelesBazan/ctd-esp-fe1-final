@@ -1,5 +1,7 @@
-import { useSelector } from "react-redux";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import BotonFavorito from '../botones/boton-favorito.componente';
+import { detallePersonaje } from '../../actions/personajes.actions';
 import './tarjeta-personaje.css';
 
 /**
@@ -13,10 +15,22 @@ import './tarjeta-personaje.css';
 
 const TarjetaPersonaje = ({personajesPaginados}) => {
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleDetalle = (id) => {
+        dispatch(detallePersonaje(id));
+        navigate('/detalle');
+    }
+
     return <>
         {
             personajesPaginados?.map((personaje) => (
-                <div key={personaje.id} className="tarjeta-personaje">
+                <div
+                    key={personaje.id}
+                    className="tarjeta-personaje"
+                    onClick={ () => handleDetalle(personaje.id) }
+                >
                     <img src={personaje.image} alt={personaje.name} />
                     <div className="tarjeta-personaje-body">
                         <span> {personaje.name} </span>
