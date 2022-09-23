@@ -15,6 +15,9 @@ import { useSelector } from "react-redux";
  * 
  * @returns la pagina de detalle
  */
+
+
+
 const PaginaDetalle = () => {
 
     const personajeId = useSelector(state => state.personajes.personajeSeleccionado);

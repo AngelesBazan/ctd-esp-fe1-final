@@ -1,4 +1,4 @@
-export const personajeByName = async (name) => {
+export const personajeByName = async (name:string) => {
 
 	const url = `https://rickandmortyapi.com/api/character/?name=${name}`;
 	

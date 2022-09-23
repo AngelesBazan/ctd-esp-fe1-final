@@ -1,4 +1,4 @@
-export const getPersonajes = async (page) => {
+export const getPersonajes = async (page:number) => {
 
 	const url = `https://rickandmortyapi.com/api/character/?page=${page}`;
 

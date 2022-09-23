@@ -2,6 +2,9 @@ interface Location {
     name: string;
 }
 
+export interface Episode {
+    episode: string[];
+}
 export interface Personaje {
     id: number;
     name: string;
@@ -9,7 +12,7 @@ export interface Personaje {
     image: string;
     species: string;
     gender: string;
-    episode: string[];
+    episode: Episode;
     location: Location;
 }
 
