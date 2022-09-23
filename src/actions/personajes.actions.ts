@@ -39,6 +39,15 @@ export const eliminarFavorito = (favoritos:any) => {
   }
 }
 
+export const limpiarFavoritos = (favoritos: any) => {
+  return{
+    type: "LIMPIAR_FAVORITOS",
+    payload: {
+      favoritos
+    }
+  }
+}
+
 export const listarPersonajes = (pag: number) => {
   return async (dispatch:any) => {
     try {

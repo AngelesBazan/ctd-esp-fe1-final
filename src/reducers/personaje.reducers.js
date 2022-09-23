@@ -30,6 +30,12 @@ export const personajeReducer = (state = estadoInicial, action) => {
                 favoritos: [...state.favoritos.filter((favorito) => favorito.id !== action.payload.favoritos.id)]
             }
 
+        case "LIMPIAR_FAVORITOS":
+            return {
+                ...state,
+                favoritos: []
+            }
+
         default:
             return {
                 ...state

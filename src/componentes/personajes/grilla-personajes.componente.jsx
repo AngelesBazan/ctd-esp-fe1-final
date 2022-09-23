@@ -9,11 +9,10 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
  * 
  * @returns un JSX element 
  */
-const GrillaPersonajes = () => {
+const GrillaPersonajes = ({personajes}) => {
 
     return <div className="grilla-personajes">
-        {/* renderizar solo si es favorito */}
-       <TarjetaPersonaje />
+       <TarjetaPersonaje personajesPaginados={personajes} />
     </div>
 }
  

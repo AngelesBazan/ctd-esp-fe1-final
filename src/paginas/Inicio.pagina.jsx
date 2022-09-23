@@ -1,7 +1,7 @@
 import Filtros from "../componentes/personajes/filtros.componente"
 import GrillaPersonajes from "../componentes/personajes/grilla-personajes.componente"
 import Paginacion from "../componentes/paginacion/paginacion.componente";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { listarPersonajes } from "../actions/personajes.actions";
 import { borrarPersonaje } from "../actions/personajes.actions";
@@ -20,6 +20,8 @@ const PaginaInicio = () => {
     const [ pagina, setPagina ] = useState(1);
 
     const dispatch = useDispatch();
+
+    const personajes = useSelector((state) => state.personajes.personajes);
 
     useEffect(() => {
         dispatch(listarPersonajes(pagina));
@@ -43,7 +45,7 @@ const PaginaInicio = () => {
         </div>
         <Filtros />
         <Paginacion pagina={pagina} setPagina={setPagina}/>
-        <GrillaPersonajes />
+        <GrillaPersonajes personajes={ personajes } />
         <Paginacion pagina={pagina} setPagina={setPagina}/>
     </div>
 }
