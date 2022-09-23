@@ -29,9 +29,12 @@ const TarjetaPersonaje = ({personajesPaginados}) => {
                 <div
                     key={personaje.id}
                     className="tarjeta-personaje"
-                    onClick={ () => handleDetalle(personaje.id) }
                 >
-                    <img src={personaje.image} alt={personaje.name} />
+                    <img 
+                        src={personaje.image}
+                        alt={personaje.name}
+                        onClick={ () => handleDetalle(personaje.id) }
+                    />
                     <div className="tarjeta-personaje-body">
                         <span> {personaje.name} </span>
                         <BotonFavorito personaje={personaje} />
