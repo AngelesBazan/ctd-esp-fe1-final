@@ -12,6 +12,7 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
 const GrillaPersonajes = () => {
 
     return <div className="grilla-personajes">
+        {/* renderizar solo si es favorito */}
        <TarjetaPersonaje />
     </div>
 }

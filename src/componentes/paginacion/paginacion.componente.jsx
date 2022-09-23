@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import './paginacion.css';
 
 /**
@@ -10,6 +11,8 @@ import './paginacion.css';
  */
 const Paginacion = ({ pagina, setPagina }) => {
 
+    const cantidadPersonajes = useSelector((state) => state.personajes.personajes.length);
+
     return <div className="paginacion">
         <button
             disabled={ pagina === 1 ? true : false }
@@ -20,7 +23,7 @@ const Paginacion = ({ pagina, setPagina }) => {
         </button>
 
         <button
-            disabled={ pagina === 42 ? true : false }
+            disabled={ pagina === 42 || cantidadPersonajes < 20 ? true : false }
             className={"primary"}
             onClick={ () => setPagina((prev) => prev+1) }
         >

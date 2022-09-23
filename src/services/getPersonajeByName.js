@@ -1,13 +1,13 @@
-export const getPersonajes = async (id) => {
+export const personajeByName = async (name) => {
 
-	const url = `https://rickandmortyapi.com/api/character/${id}`;
+	const url = `https://rickandmortyapi.com/api/character/?name=${name}`;
 
 	try {
 		const response = await fetch(url);
 		const data = await response.json();
 
         if (response.status === 200) {
-            return data;
+            return data.results;
         } else if (response.status === 404) {
 			throw new Error('No se encontró el personaje');
         }
@@ -16,4 +16,3 @@ export const getPersonajes = async (id) => {
         console.warn('Algo salió mal');
 	}
 };
-

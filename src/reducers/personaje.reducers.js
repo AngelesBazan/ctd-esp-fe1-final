@@ -1,7 +1,8 @@
 const estadoInicial = {
     personajes: [],
-    favoritos: [],
-    pagina: 1
+    buscar: "",
+    pagina: 1,
+    favoritos: []
 }
 
 export const personajeReducer = (state = estadoInicial, action) => {
@@ -11,11 +12,15 @@ export const personajeReducer = (state = estadoInicial, action) => {
                 personajes: [...action.payload.personajes]
             };
 
-        case "FILTRAR_PERSONAJE":
-            return true;
+        case "BORRAR_PERSONAJE":
+            return {
+                ...state, buscar: action.payload.buscar
+            };
 
         case "AGREGAR_FAVORITO":
-            return true;
+            return {
+                ...state, favoritos: [...state.favoritos, ...action.payload.favoritos]
+            };
 
         case "ELIMINAR_FAVORITO":
             return false;
@@ -26,8 +31,3 @@ export const personajeReducer = (state = estadoInicial, action) => {
             };
     }
 }
-
-// Filtrar personajes por el input
-// Limpiar filtro: borrar input
-
-// Agregar y sacar favoritos
