@@ -2,7 +2,7 @@ import { Reducer } from "react";
 import { PersonajesAcciones } from "../actions/personajes.actions";
 import { Personaje, Episode } from "../types/personaje.types";
 
-interface EstadoInicial {
+/* interface EstadoInicial {
     personajes: Personaje[];
     buscar: string,
     pagina: number,
@@ -10,8 +10,8 @@ interface EstadoInicial {
     personajeSeleccionado: string;
     episodios: Episode[];
 }
-
-const estadoInicial:EstadoInicial = {
+*/
+const estadoInicial = {
     personajes: [],
     buscar: "",
     pagina: 1,
@@ -20,7 +20,7 @@ const estadoInicial:EstadoInicial = {
     episodios: []
 }
 
-export const personajeReducer:Reducer<EstadoInicial, PersonajesAcciones> = (state = estadoInicial, action) => {
+export const personajeReducer = (state = estadoInicial, action) => {
     switch (action.type) {
         case "LISTAR_PERSONAJES":
             return {
