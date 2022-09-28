@@ -1,26 +1,26 @@
-import { Reducer } from "react";
+import { Reducer } from "@reduxjs/toolkit";
 import { PersonajesAcciones } from "../actions/personajes.actions";
 import { Personaje, Episode } from "../types/personaje.types";
 
-/* interface EstadoInicial {
+interface EstadoInicial {
     personajes: Personaje[];
     buscar: string,
     pagina: number,
     favoritos: Personaje[];
-    personajeSeleccionado: string;
+    personajeSeleccionado: number;
     episodios: Episode[];
 }
-*/
-const estadoInicial = {
+
+const estadoInicial: EstadoInicial = {
     personajes: [],
     buscar: "",
     pagina: 1,
     favoritos: [],
-    personajeSeleccionado: "",
+    personajeSeleccionado: 0,
     episodios: []
 }
 
-export const personajeReducer = (state = estadoInicial, action) => {
+export const personajeReducer: Reducer<EstadoInicial, PersonajesAcciones> = (state = estadoInicial, action): EstadoInicial => {
     switch (action.type) {
         case "LISTAR_PERSONAJES":
             return {

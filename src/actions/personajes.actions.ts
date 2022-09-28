@@ -117,12 +117,10 @@ export const listarEpisodios = (episodios: any) => {
   }
 }
 
-export interface ListarPersonajesAction extends ThunkAction<void, IRootState, unknown, PersonajesAcciones> {
+export interface ListarPersonajesThunkAction extends ThunkAction<void, IRootState, unknown, PersonajesAcciones>{}
 
-}
-
-export const listarPersonajes = (pag: number) => {
-  return async (dispatch:any) => {
+export const listarPersonajes = (pag: number): ListarPersonajesThunkAction => {
+  return async (dispatch) => {
     try {
       const personajes = await getPersonajes(pag);
       dispatch(listarPersonajesPaginados(personajes));
@@ -134,8 +132,10 @@ export const listarPersonajes = (pag: number) => {
   };
 }
 
-export const personajesByName = (nombre: string) => {
-  return async (dispatch:any) => {
+export interface PersonajesByNameThunkAction extends ThunkAction<void, IRootState, unknown, PersonajesAcciones>{}
+
+export const personajesByName = (nombre: string): PersonajesByNameThunkAction => {
+  return async (dispatch) => {
     try {
       const resultado = await personajeByName(nombre);
       dispatch(listarPersonajesPaginados(resultado));

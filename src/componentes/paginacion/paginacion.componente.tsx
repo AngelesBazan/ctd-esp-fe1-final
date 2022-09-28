@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+import React, { FC } from 'react';
+import { useSelector } from '../../store/store';
 import './paginacion.css';
 
 /**
@@ -9,7 +10,18 @@ import './paginacion.css';
  * 
  * @returns un JSX element 
  */
-const Paginacion = ({ pagina, setPagina }) => {
+
+interface IPaginacionProps {
+    pagina: number,
+    setPagina: React.Dispatch<React.SetStateAction<number>>
+}
+
+/* type IPaginacionProps = {
+    pagina: number,
+    setPagina: React.Dispatch<React.SetStateAction<number>>
+} */
+
+const Paginacion:FC<IPaginacionProps> = ({ pagina, setPagina }) => {
 
     const cantidadPersonajes = useSelector((state) => state.personajes.personajes.length);
 
@@ -17,7 +29,7 @@ const Paginacion = ({ pagina, setPagina }) => {
         <button
             disabled={ pagina === 1 ? true : false }
             className={"primary"}
-            onClick={ () => setPagina((prev) => prev-1) }
+            onClick={ () => setPagina((prev: number) => prev-1) }
         >
             Anterior
         </button>
@@ -25,7 +37,7 @@ const Paginacion = ({ pagina, setPagina }) => {
         <button
             disabled={ pagina === 42 || cantidadPersonajes < 20 ? true : false }
             className={"primary"}
-            onClick={ () => setPagina((prev) => prev+1) }
+            onClick={ () => setPagina((prev: number) => prev+1) }
         >
             Siguiente
         </button>

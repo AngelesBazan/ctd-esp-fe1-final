@@ -1,6 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { composeWithDevTools  } from 'redux-devtools-extension';
-// Importamos applyMiddleware de Redux, para poder agregar Thunk como Middleware
 import { createStore, applyMiddleware } from 'redux';
 import { TypedUseSelectorHook, useSelector as useReduxSelector } from 'react-redux';
 import thunk from 'redux-thunk';

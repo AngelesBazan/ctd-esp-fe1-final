@@ -1,4 +1,6 @@
-export const personajeByName = async (name:string) => {
+import Personaje from "../types/personaje.types";
+
+export const personajeByName = async (name:string): Promise<Personaje[] | undefined> => {
 
 	const url = `https://rickandmortyapi.com/api/character/?name=${name}`;
 	

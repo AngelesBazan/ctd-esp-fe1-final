@@ -1,5 +1,7 @@
 /* import { useEffect } from 'react';
 import { useDispatch } from 'react-redux'; */
+import { FC } from 'react';
+import { Episode } from '../../types/personaje.types';
 import './tarjeta-episodio.css';
 
 /**
@@ -10,7 +12,14 @@ import './tarjeta-episodio.css';
  * 
  * @returns un JSX element 
  */
-const TarjetaEpisodio = ({episodios}) => {
+
+
+interface IEpidosioProps {
+    episodios: Episode[];
+}
+
+
+const TarjetaEpisodio:FC<IEpidosioProps> = ({episodios}) => {
 
     /* console.log(episodios); */
 

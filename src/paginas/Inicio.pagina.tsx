@@ -1,10 +1,11 @@
 import Filtros from "../componentes/personajes/filtros.componente"
 import GrillaPersonajes from "../componentes/personajes/grilla-personajes.componente"
 import Paginacion from "../componentes/paginacion/paginacion.componente";
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useState, useEffect, FC } from "react";
 import { listarPersonajes } from "../actions/personajes.actions";
 import { borrarPersonaje } from "../actions/personajes.actions";
+import { useSelector } from "../store/store";
  
 /**
  * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
@@ -15,7 +16,7 @@ import { borrarPersonaje } from "../actions/personajes.actions";
  * @returns la pagina de inicio
  */
 
-const PaginaInicio = () => {
+const PaginaInicio:FC = () => {
 
     const [ pagina, setPagina ] = useState(1);
 
@@ -25,12 +26,11 @@ const PaginaInicio = () => {
 
     useEffect(() => {
         dispatch(listarPersonajes(pagina));
-        // eslint-disable-next-line
-    }, [pagina]);
+    }, [dispatch, pagina]);
 
     const limpiarFiltro = () => {
         dispatch(borrarPersonaje());
-        dispatch(listarPersonajes());
+        dispatch(listarPersonajes(pagina));
     }
 
     return <div className="container">

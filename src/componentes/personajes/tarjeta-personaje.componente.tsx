@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import BotonFavorito from '../botones/boton-favorito.componente';
 import { detallePersonaje } from '../../actions/personajes.actions';
 import './tarjeta-personaje.css';
+import { FC } from 'react';
+import Personaje from '../../types/personaje.types';
 
 /**
  * Tarjeta para cada personaje dentro de la grilla de personajes. 
@@ -13,12 +15,17 @@ import './tarjeta-personaje.css';
  * @returns un JSX element 
  */
 
-const TarjetaPersonaje = ({personajesPaginados}) => {
+interface ITarjetaProps {
+    personajesPaginados: Personaje[]
+}
+
+
+const TarjetaPersonaje:FC<ITarjetaProps> = ({personajesPaginados}) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleDetalle = (id) => {
+    const handleDetalle = (id: number) => {
         dispatch(detallePersonaje(id));
         navigate('/detalle');
     }

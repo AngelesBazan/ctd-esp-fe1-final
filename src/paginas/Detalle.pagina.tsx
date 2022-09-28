@@ -1,7 +1,8 @@
 import "./Detalle.css";
 import BotonFavorito from "../componentes/botones/boton-favorito.componente";
 import TarjetaEpisodio from "../componentes/episodios/tarjeta-episodio.componente";
-import { useSelector } from "react-redux";
+import { useSelector } from "../store/store";
+import { FC } from "react";
 
 /**
  * Esta es la pagina de detalle. Aqui se puede mostrar la vista sobre el personaje seleccionado junto con la lista de episodios en los que aparece
@@ -18,33 +19,33 @@ import { useSelector } from "react-redux";
 
 
 
-const PaginaDetalle = () => {
+const PaginaDetalle:FC = () => {
 
     const personajeId = useSelector(state => state.personajes.personajeSeleccionado);
     const personajes = useSelector(state => state.personajes.personajes);
 
-    const seleccionado = (id) => personajes.find(p => p.id === id);
+    const seleccionado = (id: number) => personajes?.find(p => p.id === id);
     const personaje = seleccionado(personajeId);
 
 
     return <div className="container">
-        <h3>{personaje.name}</h3>
+        <h3>{personaje?.name}</h3>
         <div className={"detalle"}>
             <div className={"detalle-header"}>
-                <img src={personaje.image} alt={personaje.name}/>
+                <img src={personaje?.image} alt={personaje?.name}/>
                 <div className={"detalle-header-texto"}>
 
-                    <p>{personaje.name}</p>
-                    <p>Planeta: {personaje.location.name}</p>
-                    <p>Genero: {personaje.gender}</p>
+                    <p>{personaje?.name}</p>
+                    <p>Planeta: {personaje?.location.name}</p>
+                    <p>Genero: {personaje?.gender}</p>
                 </div>
-                <BotonFavorito esFavorito={false} />
+                {/* <BotonFavorito personaje={personaje} /> */}
             </div>
         </div>
         <h4>Lista de episodios donde apareció el personaje</h4>
         <div className={"episodios-grilla"}>
 
-            <TarjetaEpisodio episodios={personaje.episode} />
+           {/*  <TarjetaEpisodio episodios={personaje?.episode} /> */}
 
         </div>
     </div>

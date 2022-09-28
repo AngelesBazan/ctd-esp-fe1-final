@@ -1,8 +1,10 @@
-export const getPersonajes = async (page:number) => {
+import Personaje from "../types/personaje.types";
+
+export const getPersonajes = async (page:number): Promise<Personaje[] | undefined> => {
 
 	const url = `https://rickandmortyapi.com/api/character/?page=${page}`;
 
-	try {
+	 try {
 		const response = await fetch(url);
 		const data = await response.json();
 
@@ -14,5 +16,5 @@ export const getPersonajes = async (page:number) => {
         
 	} catch {
         console.warn('Algo salió mal');
-	}
+	} 
 };

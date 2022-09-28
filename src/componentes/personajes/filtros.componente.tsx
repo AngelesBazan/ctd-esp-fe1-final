@@ -1,12 +1,18 @@
 import { personajesByName } from '../../actions/personajes.actions';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import './filtros.css';
+import { FC } from 'react';
+import { useSelector } from '../../store/store';
 
-const Filtros = () => {
+const Filtros:FC = () => {
 
     const dispatch = useDispatch();
 
     const buscador = useSelector(state => state.personajes.buscar);
+    
+    /* const prueba = useSelector(state => state.personajes);
+    console.log(prueba); */
+    
 
     return <div className="filtros">
         <label htmlFor="nombre">Filtrar por nombre:</label>

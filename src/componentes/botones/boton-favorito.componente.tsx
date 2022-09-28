@@ -1,6 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useSelector } from '../../store/store';
 import { agregarFavorito, eliminarFavorito } from '../../actions/personajes.actions';
 import './boton-favorito.css';
+import { FC } from 'react';
+import Personaje from '../../types/personaje.types';
 /**
  * Boton que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
  * 
@@ -9,7 +12,13 @@ import './boton-favorito.css';
  * 
  * @returns un JSX element 
  */
-const BotonFavorito = ({personaje}) => {
+
+
+interface IFavoritoProps {
+    personaje: Personaje;
+}
+
+const BotonFavorito:FC<IFavoritoProps> = ({personaje}) => {
 
     const dispatch = useDispatch();
     const favoritos =  useSelector((state) => state.personajes.favoritos);

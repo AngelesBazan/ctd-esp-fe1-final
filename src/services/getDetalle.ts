@@ -1,4 +1,6 @@
-export const getPersonajes = async (id:number) => {
+import { Personaje } from "../types/personaje.types";
+
+export const getPersonajes = async (id:number) : Promise<Personaje[] | undefined> => {
 
 	const url = `https://rickandmortyapi.com/api/character/${id}`;
 
