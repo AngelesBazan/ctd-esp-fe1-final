@@ -30,6 +30,7 @@ const PaginaInicio:FC = () => {
 
     const limpiarFiltro = () => {
         dispatch(borrarPersonaje());
+        setPagina(1);
         dispatch(listarPersonajes(pagina));
     }
 

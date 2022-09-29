@@ -2,55 +2,55 @@ import { Action, ActionCreator, ThunkAction } from "@reduxjs/toolkit";
 import { getPersonajes } from "../services/getPersonajes";
 import { personajeByName } from "../services/getPersonajeByName";
 /* import { getEpisodio } from "../services/getEpidosio"; */
-import { Personaje } from "../types/personaje.types";
+import { Episode, Personaje } from "../types/personaje.types";
 import { IRootState } from "../store/store";
 
-export interface ListarPersonajesPaginadosAction extends Action {
+interface ListarPersonajesPaginadosAction extends Action {
   type: "LISTAR_PERSONAJES",
   payload: {
     personajes: Personaje[]
   }
 }
 
-export interface BorrarPersonajeAction extends Action {
+interface BorrarPersonajeAction extends Action {
   type: "BORRAR_PERSONAJE",
   payload: {
     buscar: string
   }
 }
 
-export interface AgregarFavoritoAction extends Action {
+interface AgregarFavoritoAction extends Action {
   type: "AGREGAR_FAVORITO",
   payload: {
     favoritos: Personaje[]
   }
 }
 
-export interface EliminarFavoritoAction extends Action {
+interface EliminarFavoritoAction extends Action {
   type: "ELIMINAR_FAVORITO",
     payload: {
       favoritos: Personaje[]
     }
 }
 
-export interface LimpiarFavoritoAction extends Action {
+interface LimpiarFavoritoAction extends Action {
   type: "LIMPIAR_FAVORITOS",
     payload: {
       favoritos: Personaje[]
     }
 }
 
-export interface DetallePersonajeAction extends Action {
+interface DetallePersonajeAction extends Action {
   type: "MOSTRAR_DETALLE",
     payload: {
-      personajeSeleccionado: Personaje[]
+      personajeSeleccionado: number
     }
 }
 
-export interface ListarEpisodiosAction extends Action {
+interface ListarEpisodiosAction extends Action {
   type: "LISTAR_EPISODIOS",
     payload: {
-      episodios: Personaje[]
+      episodios: Episode[]
     }
 }
 
@@ -58,7 +58,7 @@ export const listarPersonajesPaginados: ActionCreator<ListarPersonajesPaginadosA
   return {
     type: "LISTAR_PERSONAJES",
     payload: {
-      personajes
+      personajes: personajes
     }
   }
 }
@@ -76,7 +76,7 @@ export const agregarFavorito: ActionCreator<AgregarFavoritoAction> = (favoritos:
   return {
     type: "AGREGAR_FAVORITO",
     payload: {
-      favoritos
+      favoritos: favoritos
     }
   }
 } 
@@ -85,7 +85,7 @@ export const eliminarFavorito: ActionCreator<EliminarFavoritoAction> = (favorito
   return {
     type: "ELIMINAR_FAVORITO",
     payload: {
-      favoritos
+      favoritos: favoritos
     }
   }
 }
@@ -94,32 +94,32 @@ export const limpiarFavoritos: ActionCreator<LimpiarFavoritoAction> = (favoritos
   return{
     type: "LIMPIAR_FAVORITOS",
     payload: {
-      favoritos
+      favoritos: favoritos
     }
   }
 }
 
-export const detallePersonaje = (personajeSeleccionado: any) => {
+export const detallePersonaje = (personajeSeleccionado: Personaje[]) => {
   return {
     type: "MOSTRAR_DETALLE",
     payload: {
-      personajeSeleccionado
+      personajeSeleccionado: personajeSeleccionado
     }
   }
 }
 
-export const listarEpisodios = (episodios: any) => {
+export const listarEpisodios = (episodios: Episode[]) => {
   return {
     type: "LISTAR_EPISODIOS",
     payload: {
-      episodios
+      episodios: episodios
     }
   }
 }
 
 export interface ListarPersonajesThunkAction extends ThunkAction<void, IRootState, unknown, PersonajesAcciones>{}
 
-export const listarPersonajes = (pag: number): ListarPersonajesThunkAction => {
+export const listarPersonajes = (pag: number):ListarPersonajesThunkAction => {
   return async (dispatch) => {
     try {
       const personajes = await getPersonajes(pag);
@@ -147,7 +147,7 @@ export const personajesByName = (nombre: string): PersonajesByNameThunkAction =>
   };
 }
 
-export type PersonajesAcciones = ReturnType<typeof listarPersonajesPaginados> | ReturnType<typeof borrarPersonaje> | ReturnType<typeof agregarFavorito> | ReturnType<typeof eliminarFavorito> | ReturnType<typeof limpiarFavoritos> | ReturnType<typeof detallePersonaje>  | ReturnType<typeof listarEpisodios>
+export type PersonajesAcciones = ListarPersonajesPaginadosAction | BorrarPersonajeAction | AgregarFavoritoAction | EliminarFavoritoAction | LimpiarFavoritoAction | DetallePersonajeAction | ListarEpisodiosAction
 
 
 /* export const listarTodosEpisodios = (listarEpisodios: any) => {

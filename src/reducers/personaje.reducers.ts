@@ -30,19 +30,20 @@ export const personajeReducer: Reducer<EstadoInicial, PersonajesAcciones> = (sta
 
         case "BORRAR_PERSONAJE":
             return {
-                ...state, buscar: action.payload.buscar
+                ...state,
+                buscar: action.payload.buscar
             };
 
         case "AGREGAR_FAVORITO":
             return {
                 ...state, 
-                favoritos: [ action.payload.favoritos, ...state.favoritos.filter(favorito => favorito.id !== action.payload.favoritos.id)]
+                /* favoritos: [ action.payload.favoritos, ...state.favoritos.filter(favorito => favorito.id !== action.payload.favoritos.id)] */
             }; 
             
         case "ELIMINAR_FAVORITO":
             return {
                 ...state,
-                favoritos: [...state.favoritos.filter((favorito) => favorito.id !== action.payload.favoritos.id)]
+               /*  favoritos: [...state.favoritos.filter((favorito) => favorito.id !== action.payload.favoritos.id)] */
             }
 
         case "LIMPIAR_FAVORITOS":
