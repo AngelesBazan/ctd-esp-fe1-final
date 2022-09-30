@@ -10,10 +10,6 @@ const Filtros:FC = () => {
 
     const buscador = useSelector(state => state.personajes.buscar);
     
-    /* const prueba = useSelector(state => state.personajes);
-    console.log(prueba); */
-    
-
     return <div className="filtros">
         <label htmlFor="nombre">Filtrar por nombre:</label>
         <input

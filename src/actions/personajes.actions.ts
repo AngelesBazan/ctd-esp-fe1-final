@@ -8,7 +8,8 @@ import { IRootState } from "../store/store";
 interface ListarPersonajesPaginadosAction extends Action {
   type: "LISTAR_PERSONAJES",
   payload: {
-    personajes: Personaje[]
+    personajes: Personaje[],
+    buscar: string
   }
 }
 
@@ -54,11 +55,12 @@ interface ListarEpisodiosAction extends Action {
     }
 }
 
-export const listarPersonajesPaginados: ActionCreator<ListarPersonajesPaginadosAction> = (personajes:Personaje[]) => {
+export const listarPersonajesPaginados: ActionCreator<ListarPersonajesPaginadosAction> = (personajes:Personaje[], string) => {
   return {
     type: "LISTAR_PERSONAJES",
     payload: {
-      personajes: personajes
+      personajes: personajes,
+      buscar: string
     }
   }
 }
@@ -123,7 +125,7 @@ export const listarPersonajes = (pag: number):ListarPersonajesThunkAction => {
   return async (dispatch) => {
     try {
       const personajes = await getPersonajes(pag);
-      dispatch(listarPersonajesPaginados(personajes));
+      dispatch(listarPersonajesPaginados(personajes, ""));
 
 		} catch (error) {
       const errorMessage = new Error('¡Ups! Algo salió mal...');
@@ -138,8 +140,7 @@ export const personajesByName = (nombre: string): PersonajesByNameThunkAction =>
   return async (dispatch) => {
     try {
       const resultado = await personajeByName(nombre);
-      dispatch(listarPersonajesPaginados(resultado));
-      
+      dispatch(listarPersonajesPaginados(resultado, nombre));
 		} catch (error) {
       const errorMessage = new Error('¡Ups! Algo salió mal...');
       return errorMessage;

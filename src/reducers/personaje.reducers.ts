@@ -25,7 +25,8 @@ export const personajeReducer: Reducer<EstadoInicial, PersonajesAcciones> = (sta
         case "LISTAR_PERSONAJES":
             return {
                 ...state,
-                personajes: [...action.payload.personajes]
+                personajes: [...action.payload.personajes],
+                buscar: action.payload.buscar
             };
 
         case "BORRAR_PERSONAJE":
