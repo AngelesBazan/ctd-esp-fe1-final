@@ -15,6 +15,8 @@ import { useSelector } from "../store/store";
 const PaginaFavoritos:FC = () => {
 
     const favoritos = useSelector((state) => state.personajes.favoritos);
+    console.log(favoritos);
+    
     const dispatch = useDispatch();
 
     return <div className="container">

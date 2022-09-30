@@ -37,13 +37,13 @@ export const personajeReducer: Reducer<EstadoInicial, PersonajesAcciones> = (sta
         case "AGREGAR_FAVORITO":
             return {
                 ...state, 
-                /* favoritos: [ action.payload.favoritos, ...state.favoritos.filter(favorito => favorito.id !== action.payload.favoritos.id)] */
+                favoritos: [ action.payload.favorito, ...state.favoritos.filter(favorito => favorito.id !== action.payload.favorito.id)]
             }; 
             
         case "ELIMINAR_FAVORITO":
             return {
                 ...state,
-               /*  favoritos: [...state.favoritos.filter((favorito) => favorito.id !== action.payload.favoritos.id)] */
+                favoritos: [...state.favoritos.filter((favorito) => favorito.id !== action.payload.favorito.id)]
             }
 
         case "LIMPIAR_FAVORITOS":

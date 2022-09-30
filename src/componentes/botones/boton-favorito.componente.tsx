@@ -15,23 +15,24 @@ import Personaje from '../../types/personaje.types';
 
 
 interface IFavoritoProps {
-    personaje: Personaje;
+    personajeFav: Personaje
 }
 
-const BotonFavorito:FC<IFavoritoProps> = ({personaje}) => {
+const BotonFavorito:FC<IFavoritoProps> = ({personajeFav}) => {
 
     const dispatch = useDispatch();
+    
     const favoritos =  useSelector((state) => state.personajes.favoritos);
-
-    const esFavorito = favoritos.find((favorito) => favorito.id === personaje.id); 
+    
+    const esFavorito = favoritos.find((favorito) => favorito.id === personajeFav.id); 
 
     const src = esFavorito ? "/imagenes/star-filled.png" : "/imagenes/star.png"
 
      const handleFav = () => {
         if(!esFavorito) {
-            dispatch(agregarFavorito(personaje));
+            dispatch(agregarFavorito(personajeFav));
         } else{
-            dispatch(eliminarFavorito(personaje));
+            dispatch(eliminarFavorito(personajeFav));
         }
     }
 

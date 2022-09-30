@@ -26,7 +26,7 @@ const TarjetaPersonaje:FC<ITarjetaProps> = ({personajesPaginados}) => {
     const dispatch = useDispatch();
 
     const handleDetalle = (id: number) => {
-        /* dispatch(detallePersonaje(id)); */
+        dispatch(detallePersonaje(id));
         navigate('/detalle');
     }
 
@@ -44,7 +44,8 @@ const TarjetaPersonaje:FC<ITarjetaProps> = ({personajesPaginados}) => {
                     />
                     <div className="tarjeta-personaje-body">
                         <span> {personaje.name} </span>
-                        <BotonFavorito personaje={personaje} />
+                        
+                        <BotonFavorito personajeFav={personaje} />
                     </div>
                 </div>
             ))

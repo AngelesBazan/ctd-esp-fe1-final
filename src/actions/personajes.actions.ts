@@ -22,14 +22,14 @@ interface BorrarPersonajeAction extends Action {
 interface AgregarFavoritoAction extends Action {
   type: "AGREGAR_FAVORITO",
   payload: {
-    favoritos: Personaje[]
+    favorito: Personaje
   }
 }
 
 interface EliminarFavoritoAction extends Action {
   type: "ELIMINAR_FAVORITO",
     payload: {
-      favoritos: Personaje[]
+      favorito: Personaje
     }
 }
 
@@ -72,34 +72,34 @@ export const borrarPersonaje: ActionCreator<BorrarPersonajeAction> = () => {
   }
 }
 
-export const agregarFavorito: ActionCreator<AgregarFavoritoAction> = (favoritos:Personaje[]) => {
+export const agregarFavorito: ActionCreator<AgregarFavoritoAction> = (favorito:Personaje) => {
   return {
     type: "AGREGAR_FAVORITO",
     payload: {
-      favoritos: favoritos
+      favorito: favorito
     }
   }
 } 
 
-export const eliminarFavorito: ActionCreator<EliminarFavoritoAction> = (favoritos:Personaje[]) => {
+export const eliminarFavorito: ActionCreator<EliminarFavoritoAction>=(favorito:Personaje) => {
   return {
     type: "ELIMINAR_FAVORITO",
     payload: {
-      favoritos: favoritos
+      favorito: favorito
     }
   }
 }
 
-export const limpiarFavoritos: ActionCreator<LimpiarFavoritoAction> = (favoritos: Personaje[]) => {
-  return{
+export const limpiarFavoritos: ActionCreator<LimpiarFavoritoAction>=(personaje: Personaje[]) => {
+  return {
     type: "LIMPIAR_FAVORITOS",
     payload: {
-      favoritos: favoritos
+      favoritos: personaje
     }
   }
 }
 
-export const detallePersonaje = (personajeSeleccionado: Personaje[]) => {
+export const detallePersonaje = (personajeSeleccionado: number) => {
   return {
     type: "MOSTRAR_DETALLE",
     payload: {
